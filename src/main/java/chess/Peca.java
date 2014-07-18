@@ -2,16 +2,9 @@ package chess;
 
 import java.util.List;
 
-public class Peca {
+public interface Peca {
 
-	public List<Posicao> getPossiveisPosicoes() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	List<Posicao> getPossiveisPosicoes();
 
-	public Posicao getPosicaoAtual() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	Posicao getPosicaoAtual();
 }

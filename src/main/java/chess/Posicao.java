@@ -1,5 +1,5 @@
 package chess;
 
-public class Posicao {
+public interface Posicao {
 
 }

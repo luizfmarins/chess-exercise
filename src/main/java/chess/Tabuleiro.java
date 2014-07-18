@@ -5,23 +5,39 @@ import java.util.List;
 
 public class Tabuleiro {
 
-	private final List<Peca> pecas = new ArrayList<Peca>();
-	private final Peca reiVermelho;
+	private final List<Peca> pecasAzuis = new ArrayList<Peca>();
+	private final List<Peca> pecasVermelhas = new ArrayList<Peca>();
 	
-	public Tabuleiro(Peca reiVermelho) {
+	private final Peca reiVermelho;
+	private final Peca reiAzul;
+	
+	public Tabuleiro(Peca reiVermelho, Peca reiAzul) {
 		this.reiVermelho = reiVermelho;
+		this.reiAzul = reiAzul;
 	}
 	
 	public boolean isChequeReiVermelho() {
-		for (Peca peca : pecas)
-			for(Posicao posicao : peca.getPossiveisPosicoes())
-				if (posicao.equals(reiVermelho.getPosicaoAtual()))
+		return isReiEmCheque(reiVermelho, pecasAzuis);
+	}
+
+	public boolean isChequeReiAzul() {
+		return isReiEmCheque(reiAzul, pecasVermelhas);
+	}
+	
+	public void addPecaAzul(Peca peca) {
+		pecasAzuis.add(peca);
+	}
+
+	public void addPecaVermelha(Peca peca) {
+		pecasVermelhas.add(peca);
+	}
+
+	private boolean isReiEmCheque(Peca rei, List<Peca> pecasPossivelAtaque) {
+		for (Peca peca : pecasPossivelAtaque)
+			for(Posicao posicao : peca.getPossiveisPosicoes()) 
+				if (posicao.equals(rei.getPosicaoAtual()))
 					return true;
 		
 		return false;
-	}
-
-	public void addPeca(Peca peca) {
-		pecas.add(peca);
 	}
 }
