@@ -1,5 +1,6 @@
 package chess.peca;
 
+import static chess.peca.util.AssertPosicao.assertPosicao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import chess.movimentacao.Movimentacao;
-import chess.peca.Peao;
+import chess.peca.util.MovimentacaoVermelhaMock;
 import chess.posicao.Posicao;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -53,7 +54,7 @@ public class PeaoTest {
 	}
 	
 	@Test
-	public void geMovimentacoes_semPecasNoCaminho_posicaoIncial() {
+	public void geMovimentacoes_posicaoIncial() {
 		subject = new Peao(new Posicao(1, 1), movimentacao);
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
@@ -66,7 +67,7 @@ public class PeaoTest {
 	}
 	
 	@Test
-	public void geMovimentacoes_semPecasNoCaminho_posicaoNaoIncial() {
+	public void geMovimentacoes_posicaoNaoIncial() {
 		subject = new Peao(new Posicao(1, 2), movimentacao);
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
@@ -99,47 +100,7 @@ public class PeaoTest {
 		assertPosicao(7, 3, posicoes.get(1)); 
 	}
 
-	private void assertPosicao(int x, int y, Posicao posicao) {
-		assertEquals(x, posicao.getX());
-		assertEquals(y, posicao.getY());
-	}
-	
 	private void assertQuantidadePosicoes(int quant, List<Posicao> posicoes) {
 		assertEquals(quant, posicoes.size());
-	}
-}
-
-class MovimentacaoVermelhaMock implements Movimentacao {
-
-	public Posicao getPosicaoFrente(Posicao posicao) {
-		return new Posicao(posicao.getX(), posicao.getY() + 1);
-	}
-
-	public Posicao getPosicaoTraz(Posicao posicao) {
-		return new Posicao(posicao.getX(), posicao.getY() - 1);
-	}
-
-	public Posicao getPosicaoEsquerda(Posicao posicao) {
-		return new Posicao(posicao.getX() - 1, posicao.getY());
-	}
-
-	public Posicao getPosicaoDireita(Posicao posicao) {
-		return new Posicao(posicao.getX() + 1, posicao.getY());
-	}
-
-	public Posicao getPosicaoDiagonalDireitaFrente(Posicao posicao) {
-		return new Posicao(posicao.getX() + 1, posicao.getY() + 1);
-	}
-
-	public Posicao getPosicaoDiagonalEsquerdaFrente(Posicao posicao) {
-		return new Posicao(posicao.getX() - 1, posicao.getY() + 1);
-	}
-
-	public Posicao getPosicaoDiagonalDireitaTraz(Posicao posicao) {
-		return new Posicao(posicao.getX() + 1, posicao.getY() - 1);
-	}
-
-	public Posicao getPosicaoDiagonalEsquerdaTraz(Posicao posicao) {
-		return new Posicao(posicao.getX() - 1, posicao.getY() - 1);
 	}
 }

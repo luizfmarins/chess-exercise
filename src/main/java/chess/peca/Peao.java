@@ -32,6 +32,15 @@ class Peao implements Peca {
 		return posicoes;
 	}
 
+	@Override
+	public Posicao getPosicaoAtual() {
+		return posicaoAtual;
+	}
+
+	 boolean isPosicaoInicial() {
+		return posicaoAtual.getY() == 1;
+	}
+	
 	private void addPosicaoMovimentacaoInicial(List<Posicao> posicoes) {
 		if (!isPosicaoInicial()) return;
 		
@@ -57,14 +66,5 @@ class Peao implements Peca {
 		try {
 			posicoes.add(posicaoAtual.getPosicaoFrente());
 		} catch (PosicaoInvalidaException ex) {}
-	}
-
-	@Override
-	public Posicao getPosicaoAtual() {
-		return posicaoAtual;
-	}
-
-	public boolean isPosicaoInicial() {
-		return posicaoAtual.getY() == 1;
 	}
 }
