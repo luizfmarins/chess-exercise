@@ -1,7 +1,6 @@
 package chess.peca;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import chess.movimentacao.Movimentacao;
@@ -26,8 +25,6 @@ class Peao implements Peca {
 		addPosicaoFrente(posicoes);
 		addPosicaoDiagonalEsquerdaFrente(posicoes);
 		addPosicaoDiagonalDireitaFrente(posicoes);
-		
-		Collections.sort(posicoes);
 		
 		return posicoes;
 	}

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -60,6 +61,8 @@ public class PeaoTest {
 		
 		assertQuantidadePosicoes(4, posicoes);
 		
+		Collections.sort(posicoes);
+		
 		assertPosicao(0, 2, posicoes.get(0)); 
 		assertPosicao(1, 2, posicoes.get(1)); 
 		assertPosicao(1, 3, posicoes.get(2)); 
@@ -72,6 +75,8 @@ public class PeaoTest {
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
 		assertQuantidadePosicoes(3, posicoes);
+		
+		Collections.sort(posicoes);
 		
 		assertPosicao(0, 3, posicoes.get(0)); 
 		assertPosicao(1, 3, posicoes.get(1)); 
@@ -95,6 +100,8 @@ public class PeaoTest {
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
 		assertQuantidadePosicoes(2, posicoes);
+		
+		Collections.sort(posicoes);
 		
 		assertPosicao(6, 3, posicoes.get(0)); 
 		assertPosicao(7, 3, posicoes.get(1)); 
