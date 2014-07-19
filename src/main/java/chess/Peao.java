@@ -7,9 +7,11 @@ import java.util.List;
 public class Peao implements Peca {
 
 	private final Posicao posicaoAtual;
+	private final Movimentacao movimentacao;
 	
-	public Peao(Posicao posicaoAtual) {
+	public Peao(Posicao posicaoAtual, Movimentacao movimentacao) {
 		this.posicaoAtual = posicaoAtual;
+		this.movimentacao = movimentacao;
 	}
 
 	@Override
@@ -30,7 +32,8 @@ public class Peao implements Peca {
 		if (!isPosicaoInicial()) return;
 		
 		try {
-			posicoes.add(posicaoAtual.getPosicaoFrente().getPosicaoFrente());
+			Posicao p = movimentacao.getPosicaoFrente(posicaoAtual);
+			posicoes.add(movimentacao.getPosicaoFrente(p));
 		} catch(PosicaoInvalidaException ex) {}
 	}
 

@@ -14,10 +14,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class PeaoTest {
 
 	private Peao subject;
+	private Movimentacao movimentacao = new MovimentacaoVermelhaMock();
 	
 	@Test
 	public void getMovimetacoes_posicaoInicial_quatroMovimentacoes() {
-		subject = new Peao(new Posicao(1, 1));
+		subject = new Peao(new Posicao(1, 1), movimentacao);
 		List<Posicao> possiveisPosicoes = subject.getMovimentacoes();
 		
 		assertEquals(4, possiveisPosicoes.size());	
@@ -25,7 +26,7 @@ public class PeaoTest {
 	
 	@Test
 	public void getMovimetacoes_posicaoNaoInicial_tresMovimentacoes() {
-		subject = new Peao(new Posicao(3, 0));
+		subject = new Peao(new Posicao(3, 0), movimentacao);
 		List<Posicao> possiveisPosicoes = subject.getMovimentacoes();
 		
 		assertEquals(3, possiveisPosicoes.size());	
@@ -34,7 +35,7 @@ public class PeaoTest {
 	@Test
 	public void isPosicaoIncial_true() {
 		for (int x = 0; x <= 7; x++) {
-			subject = new Peao(new Posicao(x, 1));
+			subject = new Peao(new Posicao(x, 1), movimentacao);
 			assertTrue(subject.isPosicaoInicial());
 		}
 	}
@@ -42,14 +43,14 @@ public class PeaoTest {
 	@Test
 	public void isPosicaoIncial_false() {
 		for (int x= 0; x <= 7; x++) {
-			subject = new Peao(new Posicao(0, 2));
+			subject = new Peao(new Posicao(0, 2), movimentacao);
 			assertFalse(subject.isPosicaoInicial());
 		}
 	}
 	
 	@Test
 	public void geMovimentacoes_semPecasNoCaminho_posicaoIncial() {
-		subject = new Peao(new Posicao(1, 1));
+		subject = new Peao(new Posicao(1, 1), movimentacao);
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
 		assertQuantidadePosicoes(4, posicoes);
@@ -62,7 +63,7 @@ public class PeaoTest {
 	
 	@Test
 	public void geMovimentacoes_semPecasNoCaminho_posicaoNaoIncial() {
-		subject = new Peao(new Posicao(1, 2));
+		subject = new Peao(new Posicao(1, 2), movimentacao);
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
 		assertQuantidadePosicoes(3, posicoes);
@@ -74,7 +75,7 @@ public class PeaoTest {
 	
 	@Test
 	public void getMovimentacoes_extremidadeEsquerdaTabuleiro() {
-		subject = new Peao(new Posicao(0, 2));
+		subject = new Peao(new Posicao(0, 2), movimentacao);
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
 		assertQuantidadePosicoes(2, posicoes);
@@ -85,7 +86,7 @@ public class PeaoTest {
 	
 	@Test
 	public void getMovimentacoes_extremidadeDireitaTabuleiro() {
-		subject = new Peao(new Posicao(7, 2));
+		subject = new Peao(new Posicao(7, 2), movimentacao);
 		List<Posicao> posicoes = subject.getMovimentacoes();
 		
 		assertQuantidadePosicoes(2, posicoes);
@@ -101,5 +102,40 @@ public class PeaoTest {
 	
 	private void assertQuantidadePosicoes(int quant, List<Posicao> posicoes) {
 		assertEquals(quant, posicoes.size());
+	}
+}
+
+class MovimentacaoVermelhaMock implements Movimentacao {
+
+	public Posicao getPosicaoFrente(Posicao posicao) {
+		return new Posicao(posicao.getX(), posicao.getY() + 1);
+	}
+
+	public Posicao getPosicaoTraz(Posicao posicao) {
+		return new Posicao(posicao.getX(), posicao.getY() - 1);
+	}
+
+	public Posicao getPosicaoEsquerda(Posicao posicao) {
+		return new Posicao(posicao.getX() - 1, posicao.getY());
+	}
+
+	public Posicao getPosicaoDireita(Posicao posicao) {
+		return new Posicao(posicao.getX() + 1, posicao.getY());
+	}
+
+	public Posicao getPosicaoDiagonalDireitaFrente(Posicao posicao) {
+		return new Posicao(posicao.getX() + 1, posicao.getY() + 1);
+	}
+
+	public Posicao getPosicaoDiagonalEsquerdaFrente(Posicao posicao) {
+		return new Posicao(posicao.getX() - 1, posicao.getY() + 1);
+	}
+
+	public Posicao getPosicaoDiagonalDireitaTraz(Posicao posicao) {
+		return new Posicao(posicao.getX() + 1, posicao.getY() - 1);
+	}
+
+	public Posicao getPosicaoDiagonalEsquerdaTraz(Posicao posicao) {
+		return new Posicao(posicao.getX() - 1, posicao.getY() - 1);
 	}
 }
