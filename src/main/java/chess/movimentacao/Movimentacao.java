@@ -1,6 +1,8 @@
-package chess;
+package chess.movimentacao;
 
-interface Movimentacao {
+import chess.posicao.Posicao;
+
+public interface Movimentacao {
 
 	Posicao getPosicaoFrente(Posicao posicao);
 

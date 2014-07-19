@@ -3,6 +3,9 @@ package chess;
 import java.util.ArrayList;
 import java.util.List;
 
+import chess.peca.Peca;
+import chess.posicao.Posicao;
+
 public class Tabuleiro {
 
 	private final List<Peca> pecasAzuis = new ArrayList<Peca>();

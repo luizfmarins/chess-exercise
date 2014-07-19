@@ -1,6 +1,8 @@
-package chess;
+package chess.movimentacao;
 
-public class MovimentacaoVermelha implements Movimentacao {
+import chess.posicao.Posicao;
+
+class MovimentacaoVermelha implements Movimentacao {
 
 	public Posicao getPosicaoFrente(Posicao posicao) {
 		return new Posicao(posicao.getX(), posicao.getY() + 1);

@@ -1,4 +1,4 @@
-package chess;
+package chess.peca;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,6 +9,10 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import chess.movimentacao.Movimentacao;
+import chess.peca.Peao;
+import chess.posicao.Posicao;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PeaoTest {

@@ -1,4 +1,5 @@
-package chess;
+package chess.posicao;
+
 
 public class Posicao implements Comparable<Posicao>{
 

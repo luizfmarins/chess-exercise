@@ -1,6 +1,8 @@
-package chess;
+package chess.movimentacao;
 
-public class MovimentacaoAzul implements Movimentacao {
+import chess.posicao.Posicao;
+
+class MovimentacaoAzul implements Movimentacao {
 
 	@Override
 	public Posicao getPosicaoFrente(Posicao posicao) {

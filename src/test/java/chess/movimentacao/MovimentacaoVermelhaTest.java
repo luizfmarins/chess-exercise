@@ -1,10 +1,13 @@
-package chess;
+package chess.movimentacao;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import chess.movimentacao.MovimentacaoVermelha;
+import chess.posicao.Posicao;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MovimentacaoVermelhaTest {

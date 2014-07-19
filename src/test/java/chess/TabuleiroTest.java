@@ -12,6 +12,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import chess.peca.Peca;
+import chess.posicao.Posicao;
+
 @RunWith(MockitoJUnitRunner.class)
 public class TabuleiroTest {
 

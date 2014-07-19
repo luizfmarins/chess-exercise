@@ -1,4 +1,4 @@
-package chess;
+package chess.posicao;
 
 public class PosicaoInvalidaException extends RuntimeException {
 

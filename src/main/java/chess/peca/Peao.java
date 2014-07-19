@@ -1,10 +1,14 @@
-package chess;
+package chess.peca;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Peao implements Peca {
+import chess.movimentacao.Movimentacao;
+import chess.posicao.Posicao;
+import chess.posicao.PosicaoInvalidaException;
+
+class Peao implements Peca {
 
 	private final Posicao posicaoAtual;
 	private final Movimentacao movimentacao;

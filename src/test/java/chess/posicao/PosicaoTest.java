@@ -1,4 +1,4 @@
-package chess;
+package chess.posicao;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -9,6 +9,9 @@ import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import chess.posicao.Posicao;
+import chess.posicao.PosicaoInvalidaException;
 
 public class PosicaoTest {
 
