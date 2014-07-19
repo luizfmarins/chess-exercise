@@ -1,6 +1,7 @@
 package chess;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +14,8 @@ import org.junit.rules.ExpectedException;
 public class PosicaoTest {
 
 	@Rule public ExpectedException exception = ExpectedException.none(); 
+
+	private Posicao subject;
 	
 	@Test
 	public void compareTo() {
@@ -70,4 +73,75 @@ public class PosicaoTest {
 		new Posicao(0, 8);
 	}
 	
+	@Test
+	public void getPosicaoFrente() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoFrente();
+		assertEquals(2, posicaoFrente.getX());
+		assertEquals(3, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoTraz() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoTraz();
+		assertEquals(2, posicaoFrente.getX());
+		assertEquals(1, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoEsquerda() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoEsquerda();
+		assertEquals(1, posicaoFrente.getX());
+		assertEquals(2, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoDireita() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoDireita();
+		assertEquals(3, posicaoFrente.getX());
+		assertEquals(2, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoDiagonalDireitaFrente() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoDiagonalDireitaFrente();
+		assertEquals(3, posicaoFrente.getX());
+		assertEquals(3, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoDiagonalEsquerdaFrente() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoDiagonalEsquerdaFrente();
+		assertEquals(1, posicaoFrente.getX());
+		assertEquals(3, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoDiagonalDireitaTraz() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoDiagonalDireitaTraz();
+		assertEquals(3, posicaoFrente.getX());
+		assertEquals(1, posicaoFrente.getY());
+	}
+	
+	@Test
+	public void getPosicaoDiagonalEsquerdaTraz() {
+		subject = new Posicao(2, 2);
+		
+		Posicao posicaoFrente = subject.getPosicaoDiagonalEsquerdaTraz();
+		assertEquals(1, posicaoFrente.getX());
+		assertEquals(1, posicaoFrente.getY());
+	}
 }

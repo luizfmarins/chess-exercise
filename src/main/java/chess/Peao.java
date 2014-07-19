@@ -13,8 +13,43 @@ public class Peao implements Peca {
 	}
 
 	@Override
-	public List<Posicao> getPossiveisPosicoes() {
-		return null;
+	public List<Posicao> getMovimentacoes() {
+		List<Posicao> posicoes = new ArrayList<Posicao>();
+		
+		addPosicaoMovimentacaoInicial(posicoes);
+		addPosicaoFrente(posicoes);
+		addPosicaoDiagonalEsquerdaFrente(posicoes);
+		addPosicaoDiagonalDireitaFrente(posicoes);
+		
+		Collections.sort(posicoes);
+		
+		return posicoes;
+	}
+
+	private void addPosicaoMovimentacaoInicial(List<Posicao> posicoes) {
+		if (!isPosicaoInicial()) return;
+		
+		try {
+			posicoes.add(posicaoAtual.getPosicaoFrente().getPosicaoFrente());
+		} catch(PosicaoInvalidaException ex) {}
+	}
+
+	private void addPosicaoDiagonalDireitaFrente(List<Posicao> posicoes) {
+		try {
+			posicoes.add(posicaoAtual.getPosicaoDiagonalDireitaFrente());
+		} catch (PosicaoInvalidaException ex) {}
+	}
+
+	private void addPosicaoDiagonalEsquerdaFrente(List<Posicao> posicoes) {
+		try {
+			posicoes.add(posicaoAtual.getPosicaoDiagonalEsquerdaFrente());
+		} catch (PosicaoInvalidaException ex) {}
+	}
+
+	private void addPosicaoFrente(List<Posicao> posicoes) {
+		try {
+			posicoes.add(posicaoAtual.getPosicaoFrente());
+		} catch (PosicaoInvalidaException ex) {}
 	}
 
 	@Override
@@ -22,29 +57,7 @@ public class Peao implements Peca {
 		return posicaoAtual;
 	}
 
-	public List<Posicao> getMovimentacoes() {
-		List<Posicao> posicoes = new ArrayList<Posicao>();
-		
-		if (isPosicaoInicial())
-			addPosicao(posicoes, posicaoAtual.getX(), posicaoAtual.getY() + 2);
-		
-		addPosicao(posicoes, posicaoAtual.getX(), posicaoAtual.getY() + 1);
-		addPosicao(posicoes, posicaoAtual.getX() - 1, posicaoAtual.getY() + 1);
-		addPosicao(posicoes, posicaoAtual.getX() + 1, posicaoAtual.getY() + 1);
-		
-		Collections.sort(posicoes);
-		
-		return posicoes;
-	}
-
-	
 	public boolean isPosicaoInicial() {
 		return posicaoAtual.getY() == 1;
-	}
-	
-	private void addPosicao(List<Posicao> posicoes, int x, int y) {
-		try {
-			posicoes.add(new Posicao(x, y));
-		} catch (PosicaoInvalidaException ex) {} 
 	}
 }

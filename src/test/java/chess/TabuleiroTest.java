@@ -31,7 +31,7 @@ public class TabuleiroTest {
 	@Test
 	public void isChequeReiVermelho_unicaPeca_true() {
 		Peca pecaQualquer = mock(Peca.class);
-		when(pecaQualquer.getPossiveisPosicoes()).thenReturn(asList(posicaoReiVermelho));
+		when(pecaQualquer.getMovimentacoes()).thenReturn(asList(posicaoReiVermelho));
 		
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaAzul(pecaQualquer);
@@ -46,7 +46,7 @@ public class TabuleiroTest {
 		Posicao outraPosicaoQualquer = mock(Posicao.class);
 		
 		Peca peca = mock(Peca.class);
-		when(peca.getPossiveisPosicoes()).thenReturn(asList(outraPosicaoQualquer));
+		when(peca.getMovimentacoes()).thenReturn(asList(outraPosicaoQualquer));
 
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaAzul(peca);
@@ -62,8 +62,8 @@ public class TabuleiroTest {
 		
 		Peca peca = mock(Peca.class);
 		Peca peca2 = mock(Peca.class);
-		when(peca.getPossiveisPosicoes()).thenReturn(asList(outraPosicaoQualquer));
-		when(peca2.getPossiveisPosicoes()).thenReturn(asList(posicaoReiVermelho));
+		when(peca.getMovimentacoes()).thenReturn(asList(outraPosicaoQualquer));
+		when(peca2.getMovimentacoes()).thenReturn(asList(posicaoReiVermelho));
 		
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaAzul(peca);
@@ -80,8 +80,8 @@ public class TabuleiroTest {
 		
 		Peca peca = mock(Peca.class);
 		Peca peca2 = mock(Peca.class);
-		when(peca.getPossiveisPosicoes()).thenReturn(asList(outraPosicaoQualquer));
-		when(peca2.getPossiveisPosicoes()).thenReturn(asList(outraPosicaoQualquer));
+		when(peca.getMovimentacoes()).thenReturn(asList(outraPosicaoQualquer));
+		when(peca2.getMovimentacoes()).thenReturn(asList(outraPosicaoQualquer));
 		
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaAzul(peca);
@@ -97,7 +97,7 @@ public class TabuleiroTest {
 		Posicao posicaoQualquer = mock(Posicao.class);
 		
 		Peca pecaQualquer = mock(Peca.class);
-		when(pecaQualquer.getPossiveisPosicoes()).thenReturn(asList(posicaoReiVermelho, posicaoQualquer));
+		when(pecaQualquer.getMovimentacoes()).thenReturn(asList(posicaoReiVermelho, posicaoQualquer));
 		
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaAzul(pecaQualquer);
@@ -113,7 +113,7 @@ public class TabuleiroTest {
 		Posicao posicaoQualquer2 = mock(Posicao.class);
 		
 		Peca pecaQualquer = mock(Peca.class);
-		when(pecaQualquer.getPossiveisPosicoes()).thenReturn(asList(posicaoQualquer2, posicaoQualquer));
+		when(pecaQualquer.getMovimentacoes()).thenReturn(asList(posicaoQualquer2, posicaoQualquer));
 
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaAzul(pecaQualquer);
@@ -126,7 +126,7 @@ public class TabuleiroTest {
 	@Test
 	public void isChequeReiAzul_unicaPeca_true() {
 		Peca peca = mock(Peca.class);
-		when(peca.getPossiveisPosicoes()).thenReturn(asList(posicaoReiAzul));
+		when(peca.getMovimentacoes()).thenReturn(asList(posicaoReiAzul));
 		
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaVermelha(peca);
@@ -138,7 +138,7 @@ public class TabuleiroTest {
 	@Test
 	public void isChequeReiAzul_unicaPeca_false() {
 		Peca peca = mock(Peca.class);
-		when(peca.getPossiveisPosicoes()).thenReturn(asList(mock(Posicao.class)));
+		when(peca.getMovimentacoes()).thenReturn(asList(mock(Posicao.class)));
 		
 		subject = new Tabuleiro(reiVermelho, reiAzul);
 		subject.addPecaVermelha(peca);

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Peca {
 
-	List<Posicao> getPossiveisPosicoes();
+	List<Posicao> getMovimentacoes();
 
 	Posicao getPosicaoAtual();
 }

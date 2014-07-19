@@ -34,7 +34,7 @@ public class Tabuleiro {
 
 	private boolean isReiEmCheque(Peca rei, List<Peca> pecasPossivelAtaque) {
 		for (Peca peca : pecasPossivelAtaque)
-			for(Posicao posicao : peca.getPossiveisPosicoes()) 
+			for(Posicao posicao : peca.getMovimentacoes()) 
 				if (posicao.equals(rei.getPosicaoAtual()))
 					return true;
 		
